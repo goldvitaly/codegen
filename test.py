@@ -65,6 +65,10 @@ class TestCodegen(unittest.TestCase):
         self.assertPreserved("import intertools as iterators")
         self.assertPreserved("from math import floor as fl, ceil as cl")
 
-
+    def test_function_call(self):
+        self.assertPreserved("f(x, 5, x=7)")
+        self.assertPreserved("f(x, **{'x': 7})")
+        self.assertPreserved("f(x, *['x'])")
+        
 if __name__ == '__main__':
   unittest.main()
